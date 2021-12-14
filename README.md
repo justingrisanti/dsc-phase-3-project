@@ -52,7 +52,7 @@ The columns in the data are below:
 
 After looking at the histograms of the columns, most seem to be normally distributed, except for cloud data.
 
-![Image1]
+![Image1](https://raw.githubusercontent.com/justingrisanti/dsc-phase-3-project/main/Visualizations/ColumnsHist.png)
 
 ## Step 3: Data Preparation
 
@@ -84,29 +84,29 @@ The logistic regression baseline model was our best model, with an accuracy scor
 
 Training Data Results:
 
-              precision    recall  f1-score   support
+                  precision    recall  f1-score   support
 
-         0.0       0.87      0.95      0.91     85187
-         1.0       0.72      0.49      0.59     23908
+             0.0       0.87      0.95      0.91     85187
+             1.0       0.72      0.49      0.59     23908
 
-    accuracy                           0.85    109095
-   macro avg       0.79      0.72      0.75    109095
-weighted avg       0.84      0.85      0.84    109095
+        accuracy                           0.85    109095
+       macro avg       0.79      0.72      0.75    109095
+    weighted avg       0.84      0.85      0.84    109095
 
 
 Test Data Results:
 
-              precision    recall  f1-score   support
+                  precision    recall  f1-score   support
 
-         0.0       0.89      0.91      0.90     28396
-         1.0       0.65      0.60      0.62      7969
+             0.0       0.89      0.91      0.90     28396
+             1.0       0.65      0.60      0.62      7969
 
-    accuracy                           0.84     36365
-   macro avg       0.77      0.75      0.76     36365
-weighted avg       0.84      0.84      0.84     36365
+        accuracy                           0.84     36365
+       macro avg       0.77      0.75      0.76     36365
+    weighted avg       0.84      0.84      0.84     36365
 
 
-Our AUC is .85
+Our AUC is .86
 
 ![Image5](https://raw.githubusercontent.com/justingrisanti/dsc-phase-3-project/main/Visualizations/AUC.png)
 
