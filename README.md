@@ -1,113 +1,116 @@
-
 # Phase 3 Project
 
-Congratulations! You've made it through another _intense_ module, and now you're ready to show off your newfound Machine Learning skills!
+## Step 1: Business Understanding
 
-![awesome](https://raw.githubusercontent.com/learn-co-curriculum/dsc-phase-3-project/main/images/smart.gif)
+The purpose of this section is to understand what the business problem and the stakeholders that will be understanding the work that I am performing. The stakeholder of my project is the Austrialian government. In 2020, wildfires raged across the country of Australia, in order to prevent a catastrophe like this from happening again, they have contacted me to generate a machine learning classification model to help predict whether or not it will rain the next day after a certain set of conditions. The primary purpose of this algorithm is predictive, meaning we will use certain attributes to predict whether it will rain or not the next day. The work performed here should help the Australian government prepare necessary measures in real-time to work towards combating future wild-fires. 
 
-All that remains in Phase 3 is to put your new skills to use with another large project! This project should take 20 to 30 hours to complete.
+## Step 2: Data Understanding
 
-## Project Overview
+The columns in the data are below:
 
-For this project, you will engage in the full data science process from start to finish, solving a classification problem using a dataset of your choice.
+> **MinTemp:** The minimum temperature in degrees celsius
 
-### The Data
+>**MaxTemp:** The maximum temperature in degrees celsius
 
-You have the option to either **choose a dataset from a curated list** or **choose your own dataset _not on the list_**. The goal is to choose a dataset appropriate to the type of business problem and/or classification methods that most interests you. It is up to you to define a stakeholder and business problem appropriate to the dataset you choose. If you are feeling overwhelmed or behind, we recommend you choose dataset #2 or #3 from the curated list.
+>**Rainfall:** The amount of rainfall recorded for the day in mm
 
-If you choose a dataset from the curated list, **inform your instructor which dataset you chose** and jump right into the project. If you choose your own dataset, **run the dataset and business problem by your instructor for approval** before starting your project.
+>**Evaporation:** The so-called Class A pan evaporation (mm) in the 24 hours to 9am
 
-### Curated List of Datasets
+>**Sunshine:** The number of hours of bright sunshine in the day.
 
-You may select any of the four datasets below - we provide brief descriptions of each. Follow the links to learn more about the dataset and business problems before making a final decision.
+>**WindGustDir:** The direction of the strongest wind gust in the 24 hours to midnight
 
-#### 1) [Chicago Car Crashes](https://data.cityofchicago.org/Transportation/Traffic-Crashes-Crashes/85ca-t3if)
-Note this links also to [Vehicle Data](https://data.cityofchicago.org/Transportation/Traffic-Crashes-Vehicles/68nd-jvt3) and to [Driver/Passenger Data](https://data.cityofchicago.org/Transportation/Traffic-Crashes-People/u6pd-qa9d).
+>**WindGustSpeed:** The speed (km/h) of the strongest wind gust in the 24 hours to midnight
 
-Build a classifier to predict the primary contributory cause of a car accident, given information about the car, the people in the car, the road conditions etc. You might imagine your audience as a Vehicle Safety Board who's interested in reducing traffic accidents, or as the City of Chicago who's interested in becoming aware of any interesting patterns. Note that there is a **multi-class** classification problem. You will almost certainly want to bin or trim or otherwise limit the number of target categories on which you ultimately predict. Note e.g. that some primary contributory causes have very few samples.
+>**WindDir9am:** Direction of the wind at 9am
 
-#### 2) [Terry Traffic Stops](https://catalog.data.gov/dataset/terry-stops)
-In [*Terry v. Ohio*](https://www.oyez.org/cases/1967/67), a landmark Supreme Court case in 1967-8, the court found that a police officer was not in violation of the "unreasonable search and seizure" clause of the Fourth Amendment, even though he stopped and frisked a couple of suspects only because their behavior was suspicious. Thus was born the notion of "reasonable suspicion", according to which an agent of the police may e.g. temporarily detain a person, even in the absence of clearer evidence that would be required for full-blown arrests etc. Terry Stops are stops made of suspicious drivers.
+>**WindDir3pm:** Direction of the wind at 3pm
 
-Build a classifier to predict whether an arrest was made after a Terry Stop, given information about the presence of weapons, the time of day of the call, etc. Note that this is a **binary** classification problem.
+>**WindSpeed9am:** Wind speed (km/hr) averaged over 10 minutes prior to 9am
 
-Note that this dataset also includes information about gender and race. You **may** use this data as well. You may, e.g. pitch your project as an inquiry into whether race (of officer or of subject) plays a role in whether or not an arrest is made.
+>**WindSpeed3pm:** Wind speed (km/hr) averaged over 10 minutes prior to 3pm
 
-If you **do** elect to make use of race or gender data, be aware that this can make your project a highly sensitive one; your discretion will be important, as well as your transparency about how you use the data and the ethical issues surrounding it.
+>**Humidity9am:** Humidity (percent) at 9am
 
-#### 3) [SyriaTel Customer Churn](https://www.kaggle.com/becksddf/churn-in-telecoms-dataset)
+>**Humidity3pm:** Humidity (percent) at 3pm
 
-Build a classifier to predict whether a customer will ("soon") stop doing business with SyriaTel, a telecommunications company. Note that this is a **binary** classification problem.
+>**Pressure9am:** Atmospheric pressure (hpa) reduced to mean sea level at 9am
 
-Most naturally, your audience here would be the telecom business itself, interested in losing money on customers who don't stick around very long. Are there any predictable patterns here?
+>**Pressure3pm:** Atmospheric pressure (hpa) reduced to mean sea level at 3pm
 
-#### 4) [Tanzanian Water Well Data](https://www.drivendata.org/competitions/7/pump-it-up-data-mining-the-water-table/page/23/)
-This dataset is part of an *active competition* until August 1st, 2022!
+>**Cloud9am:** Fraction of sky obscured by cloud at 9am. This is measured in "oktas", which are a unit of eigths. It records how many eigths of the sky are obscured by cloud. A 0 measure indicates completely clear sky whilst an 8 indicates that it is completely overcast.
 
-Tanzania, as a developing country, struggles with providing clean water to its population of over 57,000,000. There are many waterpoints already established in the country, but some are in need of repair while others have failed altogether.
+>**Cloud3pm:** Fraction of sky obscured by cloud (in "oktas": eighths) at 3pm. See Cload9am for a description of the values
 
-Build a classifier to predict the condition of a water well, using information about the sort of pump, when it was installed, etc. Note that this is a **ternary** classification problem.
+>**Temp9am:** Temperature (degrees C) at 9am
 
-### Sourcing Your Own Data
+>**Temp3pm:** Temperature (degrees C) at 3pm
 
-Sourcing new data is a valuable skill for data scientists, but it requires a great deal of care. An inappropriate dataset or an unclear business problem can lead you spend a lot of time on a project that delivers underwhelming results. The guidelines below will help you complete a project that demonstrates your ability to engage in the full data science process.
+>**RainToday:** Boolean: 1 if precipitation (mm) in the 24 hours to 9am exceeds 1mm, otherwise 0
 
-Your dataset must be...
+>**RainTomorrow:** The amount of next day rain in mm. Used to create response variable RainTomorrow. A kind of measure of the "risk".
 
-1. **Appropriate for classification.** It should have a categorical outcome or the data needed to engineer one.   
+After looking at the histograms of the columns, most seem to be normally distributed, except for cloud data.
 
-2. **Usable to solve a specific business problem.** This solution must rely on your classification model.
+![Image1]
 
-3. **Somewhat complex.** It should contain a minimum of 1000 rows and 10 features.
+## Step 3: Data Preparation
 
-4. **Unfamiliar.** It can't be one we've already worked with during the course or that is commonly used for demonstration purposes (e.g. MNIST).
+Before modeling, I create dummy variables for the categorical columns. I remove some of the columns to avoid the dummy trap. I then complete the train-test split, and get to work on imputing nulls. I imputed nulls based on relationships and findings from the data. For Cloud Data, I use rain data and humidity to generate relationships. For sunshine data, I use rain data and the mean. The rest I imputed using the mean, as they seemed normally distributed. Lastly, I normalize the data.
 
-5. **Manageable.** Stick to datasets that you can model using the techniques introduced in Phase 3.
+## Step 4: Modeling
 
-Once you've sourced your own dataset and identified the business problem you want to solve with it, you must to **run them by your instructor for approval**.
+I ran different models using different parameters using Logistic Regression, kNN and Decision Trees. To select the best parameters, I used GridSearchCV. See the confusion matrices for the best models below.
 
-#### Problem First, or Data First?
+### Logistic Regression
 
-There are two ways that you can source your own dataset: **_Problem First_** or **_Data First_**. The less time you have to complete the project, the more strongly we recommend a Data First approach to this project.
+Baseline Model:
+![Image2](https://raw.githubusercontent.com/justingrisanti/dsc-phase-3-project/main/Visualizations/LogRegBase.png)
 
-**_Problem First_**: Start with a problem that you are interested in that you could potentially solve with a classification model. Then look for data that you could use to solve that problem. This approach is high-risk, high-reward: Very rewarding if you are able to solve a problem you are invested in, but frustrating if you end up sinking lots of time in without finding appropriate data. To mitigate the risk, set a firm limit for the amount of time you will allow yourself to look for data before moving on to the Data First approach.
+Best GridSearch Model:
+![Image6](https://raw.githubusercontent.com/justingrisanti/dsc-phase-3-project/main/Visualizations/LogRegBest.png)
 
-**_Data First_**: Take a look at some of the most popular internet repositories of cool data sets we've listed below. If you find a data set that's particularly interesting for you, then it's totally okay to build your problem around that data set.
+### k-Nearest Neighbors 
 
-There are plenty of amazing places that you can get your data from. We recommend you start looking at data sets in some of these resources first:
+![Image3](https://raw.githubusercontent.com/justingrisanti/dsc-phase-3-project/main/Visualizations/KNN.png)
 
-* [UCI Machine Learning Datasets Repository](https://archive.ics.uci.edu/ml/datasets.php)
-* [Kaggle Datasets](https://www.kaggle.com/datasets)
-* [Awesome Datasets Repo on Github](https://github.com/awesomedata/awesome-public-datasets)
-* [New York City Open Data Portal](https://opendata.cityofnewyork.us/)
-* [Inside AirBNB](http://insideairbnb.com/)
+### Decision Trees
 
-## The Deliverables
+![Image4](https://raw.githubusercontent.com/justingrisanti/dsc-phase-3-project/main/Visualizations/DT.png)
 
-There are three deliverables for this project:
+## Step 5: Regression Results
 
-* A **GitHub repository**
-* A **Jupyter Notebook**
-* A **non-technical presentation**
+The logistic regression baseline model was our best model, with an accuracy score of 85%, with the least amount of Type 1 and Type 2 error. The results are generated below: 
 
-Review the "Project Submission & Review" page in the "Milestones Instructions" topic for instructions on creating and submitting your deliverables. Refer to the rubric associated with this assignment for specifications describing high-quality deliverables.
+Training Data Results:
 
-### Key Points
+              precision    recall  f1-score   support
 
-* **Your deliverables should explicitly address each step of the data science process.** Refer to [the Data Science Process lesson](https://github.com/learn-co-curriculum/dsc-data-science-processes) from Topic 19 for more information about process models you can use.
+         0.0       0.87      0.95      0.91     85187
+         1.0       0.72      0.49      0.59     23908
 
-* **Your Jupyter Notebook should demonstrate an iterative approach to modeling.** This means that you begin with a basic model, evaluate it, and then provide justification for and proceed to a new model. We encourage you to try a bunch of different models: logistic regression, decision trees, or anything else you think would be appropriate.
+    accuracy                           0.85    109095
+   macro avg       0.79      0.72      0.75    109095
+weighted avg       0.84      0.85      0.84    109095
 
-* **You must choose appropriate classification metrics and use them to evaluate your models.** Choosing the right classification metrics is a key data science skill, and should be informed by data exploration and the business problem itself. You must then use this metric to evaluate your model performance using both training and testing data.
 
-## Getting Started
+Test Data Results:
 
-Create a new repository for your project to get started. We recommend structuring your project repository similar to the structure in [the Phase 1 Project Template](https://github.com/learn-co-curriculum/dsc-project-template). You can do this either by creating a new fork of that repository to work in or by building a new repository from scratch that mimics that structure.
+              precision    recall  f1-score   support
 
-## Project Submission and Review
+         0.0       0.89      0.91      0.90     28396
+         1.0       0.65      0.60      0.62      7969
 
-Review the "Project Submission & Review" page in the "Milestones Instructions" topic to learn how to submit your project and how it will be reviewed. Your project must pass review for you to progress to the next Phase.
+    accuracy                           0.84     36365
+   macro avg       0.77      0.75      0.76     36365
+weighted avg       0.84      0.84      0.84     36365
 
-## Summary
 
-This project is an opportunity to expand your data science toolkit by evaluating, choosing, and working with new datasets. Spending time up front making sure you have a good dataset for a solvable problem will help avoid the major problems that can sometimes derail data science projects. You've got this!
+Our AUC is .85
+
+![Image5](https://raw.githubusercontent.com/justingrisanti/dsc-phase-3-project/main/Visualizations/AUC.png)
+
+## Next Steps
+
+As our precision and recall scores are a little low, it might be beneficial to test using different models in the future, like random forests. We could also obtain more data from different periods to see how our model applies to other years.
+
