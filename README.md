@@ -1,8 +1,26 @@
 # Phase 3 Project
 
+## Preface:
+
+Link to Presentation: https://github.com/justingrisanti/dsc-phase-3-project/blob/main/Module%203%20Final%20Project%20Presentation.pdf
+
+Link to Data: https://github.com/justingrisanti/dsc-phase-3-project/tree/main/data
+
+Link to Visualization: https://github.com/justingrisanti/dsc-phase-3-project/tree/main/Visualizations
+
+Link to Jupyter Notebook: https://github.com/justingrisanti/dsc-phase-3-project/blob/main/Module%203%20Final%20Project.ipynb
+
+Link to Blog Post: https://justingrisanti.github.io/predicting_rain_patterns_in_australia
+
 ## Step 1: Business Understanding
 
-The purpose of this section is to understand what the business problem and the stakeholders that will be understanding the work that I am performing. The stakeholder of my project is the Austrialian government. In 2020, wildfires raged across the country of Australia, in order to prevent a catastrophe like this from happening again, they have contacted me to generate a machine learning classification model to help predict whether or not it will rain the next day after a certain set of conditions. The primary purpose of this algorithm is predictive, meaning we will use certain attributes to predict whether it will rain or not the next day. The work performed here should help the Australian government prepare necessary measures in real-time to work towards combating future wild-fires. 
+The purpose of this section is to define the business problem and understand the stakeholders for the work that I am performing. The Bureau of Meteorology is responsible for predicting weather patterns throughout the entire Australian region. According to their website, their forecast accuracy for rain varies much more than their forecasts for temperature and wind. 
+
+According to their analyses, they've underpredicted rainfall each year for the past five years. The goal is to create a classification model that allows the Bureau of Meteorology to improve their predictions of whether or not it will rain the next day. This will allow them to inform the public better so that citizens can prepare accordingly for the possibility of rain. 
+
+The stakeholders of this project are the Bureau of Meteorology and citizens of Australia.
+
+The main purpose of this classification model is predictive, meaning that given charactaristics of rain data on a given day, the model should be able to predict whether it will rain the next day or not. My model is not meant to replace the Bureau of Meteorology's current system of predicting rain for the region of Australia, however, it is meant serve as an input to strengthen their predictions and assumptions, and to reduce the risk of failing to predict that it will rain the next day.
 
 ## Step 2: Data Understanding
 
@@ -56,11 +74,11 @@ After looking at the histograms of the columns, most seem to be normally distrib
 
 ## Step 3: Data Preparation
 
-Before modeling, I create dummy variables for the categorical columns. I remove some of the columns to avoid the dummy trap. I then complete the train-test split, and get to work on imputing nulls. I imputed nulls based on relationships and findings from the data. For Cloud Data, I use rain data and humidity to generate relationships. For sunshine data, I use rain data and the mean. The rest I imputed using the mean, as they seemed normally distributed. Lastly, I normalize the data.
+Before modeling, I create numeric columns for our categorical fields using OneHotEncoding. I remove some of the columns to avoid the dummy trap. I then imputed nulls based on relationships and findings from the data. For Cloud Data, I use rain data and humidity to generate relationships. For sunshine data, I use rain data and the mean. The rest I imputed using the most frequent amount, as they seemed normally distributed.
 
 ## Step 4: Modeling
 
-I ran different models using different parameters using Logistic Regression, kNN and Decision Trees. To select the best parameters, I used GridSearchCV. See the confusion matrices for the best models below.
+I ran different models using different parameters using Logistic Regression, kNN and Decision Trees. To select the best parameters, I used GridSearchCV. See the confusion matrices for the best models below. The metric I focus on the most will be recall, because if there are false negatives in my model, then it could rain on citizens who expected a dry day. As the Bureau of Meteorology has been underestimating rain over the past five years, we are trying to minimize false negatives as much as possible.
 
 ### Logistic Regression
 
@@ -80,30 +98,31 @@ Best GridSearch Model:
 
 ## Step 5: Regression Results
 
-The logistic regression baseline model was our best model, with an accuracy score of 85%, with the least amount of Type 1 and Type 2 error. The results are generated below: 
+The logistic regression model was our best model, with a recall score of .77. The results are generated below: 
 
 Training Data Results:
 
-                  precision    recall  f1-score   support
+                   precision    recall  f1-score   support
 
-             0.0       0.87      0.95      0.91     85187
-             1.0       0.72      0.49      0.59     23908
+             0.0       0.79      0.80      0.79     82693
+             1.0       0.79      0.78      0.79     82693
 
-        accuracy                           0.85    109095
-       macro avg       0.79      0.72      0.75    109095
-    weighted avg       0.84      0.85      0.84    109095
+        accuracy                           0.79    165386
+       macro avg       0.79      0.79      0.79    165386
+    weighted avg       0.79      0.79      0.79    165386
+
 
 
 Test Data Results:
 
-                  precision    recall  f1-score   support
+                    precision    recall  f1-score   support
 
-             0.0       0.89      0.91      0.90     28396
-             1.0       0.65      0.60      0.62      7969
+              0.0       0.92      0.79      0.85     27623
+              1.0       0.52      0.77      0.62      7926
 
-        accuracy                           0.84     36365
-       macro avg       0.77      0.75      0.76     36365
-    weighted avg       0.84      0.84      0.84     36365
+         accuracy                           0.79     35549
+        macro avg       0.72      0.78      0.74     35549
+     weighted avg       0.83      0.79      0.80     35549
 
 
 Our AUC is .86
@@ -112,5 +131,5 @@ Our AUC is .86
 
 ## Next Steps
 
-As our precision and recall scores are a little low, it might be beneficial to test using different models in the future, like random forests. We could also obtain more data from different periods to see how our model applies to other years.
+As our precision is a little low, it might be beneficial to test using different models in the future, like random forests. We could also obtain more data with different features to see if it improves the model.
 
