@@ -82,10 +82,6 @@ I ran different models using different parameters using Logistic Regression, kNN
 
 ### Logistic Regression
 
-Baseline Model:
-![Image2](https://raw.githubusercontent.com/justingrisanti/dsc-phase-3-project/main/Visualizations/LogRegBase.png)
-
-Best GridSearch Model:
 ![Image6](https://raw.githubusercontent.com/justingrisanti/dsc-phase-3-project/main/Visualizations/LogRegBest.png)
 
 ### k-Nearest Neighbors 
@@ -124,6 +120,7 @@ Test Data Results:
         macro avg       0.72      0.78      0.74     35549
      weighted avg       0.83      0.79      0.80     35549
 
+![Image6](https://raw.githubusercontent.com/justingrisanti/dsc-phase-3-project/main/Visualizations/FinalCM.png)
 
 Our AUC is .86
 
